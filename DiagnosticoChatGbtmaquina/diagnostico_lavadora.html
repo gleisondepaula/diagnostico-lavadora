@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico de Máquina de Lavar</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(120deg, #a6c0fe, #f68084);
+            color: white;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+        select, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        select {
+            background: #f4f4f4;
+        }
+        button {
+            background: #ff4757;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #e84118;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Diagnóstico de Máquina de Lavar</h2>
+        <label for="problema">Selecione o problema:</label>
+        <select id="problema">
+            <option value="naoLiga">Não liga</option>
+            <option value="naoEnche">Não enche de água</option>
+            <option value="naoGira">Não gira o tambor</option>
+            <option value="fazBarulho">Faz barulho excessivo</option>
+            <option value="vazaAgua">Vaza água</option>
+        </select>
+        <button onclick="diagnosticar()">Diagnosticar</button>
+        <p id="resultado"></p>
+    </div>
+    
+    <script>
+        function diagnosticar() {
+            let problema = document.getElementById("problema").value;
+            let resultado = document.getElementById("resultado");
+            
+            let diagnosticos = {
+                "naoLiga": "🔴 Possíveis causas: Tomada com defeito, cabo de energia danificado, placa eletrônica queimada. Verifique a energia e os fusíveis.",
+                "naoEnche": "🔵 Possíveis causas: Torneira fechada, mangueira entupida, válvula de entrada de água defeituosa.",
+                "naoGira": "🟢 Possíveis causas: Correia solta ou rompida, motor queimado, problema na placa eletrônica.",
+                "fazBarulho": "🟡 Possíveis causas: Objeto estranho no tambor, rolamentos gastos, desbalanceamento da carga.",
+                "vazaAgua": "🟠 Possíveis causas: Mangueira rachada, vedação da porta com defeito, problema na bomba de drenagem."
+            };
+            
+            resultado.textContent = diagnosticos[problema] || "Erro ao identificar problema.";
+        }
+    </script>
+</body>
+</html>
